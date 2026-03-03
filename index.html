@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evil Morty's Fnf Hub 350+ Games</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="home">
+    <h1>Evil Morty's FNF Hub</h1>
+    <p>350+ Friday Night Funkin' Mods from KBH Games – No downloads, play now!</p>
+    
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Search mods (e.g. tricky, pibby, impostor)" oninput="searchMods()">
+    </div>
+
+    <div class="grid" id="modGrid">
+      <!-- Mod cards will be here – add as many as you want -->
+      <div class="card" data-title="Friday Night Funkin' D-Sides" data-url="https://kbhgames.com/game/friday-night-funkin-d-sides">
+        <h3>Friday Night Funkin' D-Sides</h3>
+        <p>Remixed tracks, fresh designs, 25+ songs</p>
+      </div>
+
+      <div class="card" data-title="FNF Pibby Corrupted" data-url="https://kbhgames.com/game/friday-night-funkin-pibby-corrupted">
+        <h3>FNF Pibby Corrupted</h3>
+        <p>Corrupted cartoon crossover adventure</p>
+      </div>
+
+      <div class="card" data-title="FNF vs Indie Cross" data-url="https://kbhgames.com/game/friday-night-funkin-vs-indie-cross">
+        <h3>FNF vs Indie Cross</h3>
+        <p>Cuphead, Sans, Bendy battles</p>
+      </div>
+
+      <div class="card" data-title="FNF vs Impostor (2025 UPDOG)" data-url="https://kbhgames.com/game/fnf-vs-impostor-2025-updog">
+        <h3>FNF vs Impostor (2025 UPDOG)</h3>
+        <p>Reimagined Among Us impostor battles</p>
+      </div>
+
+      <div class="card" data-title="FNF vs Whitty Full Week" data-url="https://kbhgames.com/game/friday-night-funkin-v-s-whitty-full-week">
+        <h3>FNF vs Whitty Full Week</h3>
+        <p>Lo-Fight, Overhead, Ballistic – very hard</p>
+      </div>
+
+      <div class="card" data-title="FNF vs Garcello" data-url="https://kbhgames.com/game/friday-night-funkin-vs-garcello">
+        <h3>FNF vs Garcello</h3>
+        <p>Headache, Nerves, Release songs</p>
+      </div>
+
+      <div class="card" data-title="FNF The Squidward Tricky Mod" data-url="https://kbhgames.com/game/friday-night-funkin-the-squidward-tricky-mod">
+        <h3>FNF The Squidward Tricky Mod</h3>
+        <p>Squidward vs Tricky Phase 3 style</p>
+      </div>
+
+      <div class="card" data-title="FNF vs Mario's Madness V2" data-url="https://kbhgames.com/game/fnf-vs-marios-madness-v2">
+        <h3>FNF vs Mario's Madness V2</h3>
+        <p>Creepypasta Mario horror songs</p>
+      </div>
+
+      <!-- Add 300+ more like this by copying the pattern. Use KBH Games URLs from https://kbhgames.com/tag/friday-night-funkin or search "friday night funkin site:kbhgames.com" -->
+      <!-- Example: <div class="card" data-title="Mod Name" data-url="https://kbhgames.com/game/slug-here"><h3>Mod Name</h3><p>Description</p></div> -->
+
+    </div>
+  </div>
+
+  <div class="game-view" id="gameView" style="display:none;">
+    <button class="exit-btn" onclick="exitGame()">Exit to Hub</button>
+    <iframe id="gameFrame" src="" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    function showGame(url) {
+      document.getElementById('home').style.display = 'none';
+      document.getElementById('gameView').style.display = 'block';
+      document.getElementById('gameFrame').src = url;
+    }
+
+    function exitGame() {
+      document.getElementById('gameView').style.display = 'none';
+      document.getElementById('home').style.display = 'block';
+      document.getElementById('gameFrame').src = '';
+    }
+
+    function searchMods() {
+      let input = document.getElementById('search').value.toLowerCase();
+      let cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        let title = card.getAttribute('data-title').toLowerCase();
+        card.style.display = title.includes(input) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
